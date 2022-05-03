@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DissidiaAPI", "DissidiaAPI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DissidiaLibrary", "DissidiaLibrary\DissidiaLibrary.csproj", "{56484BE9-0D89-41E2-8530-2BB6936FCA3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DissidiaWebUI", "DissidiaWebUI\DissidiaWebUI.csproj", "{E73A98B6-FDC6-40BF-81F4-A72D542B30FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{56484BE9-0D89-41E2-8530-2BB6936FCA3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56484BE9-0D89-41E2-8530-2BB6936FCA3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56484BE9-0D89-41E2-8530-2BB6936FCA3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E73A98B6-FDC6-40BF-81F4-A72D542B30FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E73A98B6-FDC6-40BF-81F4-A72D542B30FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E73A98B6-FDC6-40BF-81F4-A72D542B30FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E73A98B6-FDC6-40BF-81F4-A72D542B30FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
