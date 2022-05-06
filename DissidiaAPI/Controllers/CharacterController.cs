@@ -21,6 +21,7 @@ namespace DissidiaAPI.Controllers
 
         }
         // GET: CharacterController
+        [HttpGet("Character")]
         public async Task<List<CharacterModel>> Index()
         {
             return await _cosmosDB.LoadRecordsByIdAsync<CharacterModel>();
@@ -34,14 +35,14 @@ namespace DissidiaAPI.Controllers
         }
 
         // Post: CharacterController/Create
-        [HttpPost]
+        [HttpPost("Character/Create")]
         public async Task Create([FromBody]CharacterModel character)
         {
             await _cosmosDB.UpsertRecordAsync(character);
         }
 
         // Put: CharacterController/Edit
-        [HttpPut]
+        [HttpPut("Character/Edit")]
         public async Task Edit([FromBody]CharacterModel character)
         {
             await _cosmosDB.UpsertRecordAsync(character);
