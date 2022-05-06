@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dissidia012Library.Models
+namespace DissidiaLibrary.Models
 {
 
     public class AttackModel

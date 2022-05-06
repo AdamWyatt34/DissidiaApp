@@ -27,6 +27,7 @@ namespace DissidiaAPI.Controllers
         }
 
         // GET: CharacterController/Details/5
+        [HttpGet("Character/{id}")]
         public async Task<CharacterModel> Details(string id)
         {
             return await _cosmosDB.LoadRecordsByIdAsync<CharacterModel>(id);
