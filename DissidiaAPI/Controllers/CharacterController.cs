@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace DissidiaAPI.Controllers
 {
+    [Route("api")]
     public class CharacterController : ControllerBase
     {
         private readonly CosmosDBDataAccess _cosmosDB;

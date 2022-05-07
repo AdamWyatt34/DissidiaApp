@@ -1,0 +1,7 @@
+﻿<select class="form-select form-select-lg mb-3" @onchange="@SendNewCharacter">
+    @foreach (var character in _charactersDictionary)
+    {
+        <option value=@character.Key>@character.Value</option>
+    }
+</select>
+

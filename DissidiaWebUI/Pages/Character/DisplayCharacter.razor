@@ -1,8 +1,12 @@
-﻿@page "/Character/{id:string}"
+﻿@page "/Character/{CharacterId}"
 
-@*Dropdown with all characters should be it's own component*@
+<CharacterSelector CharacterId=@currentId/>
 
-<h1>@_characterModel.Name</h1>
-<p class="lead">@_characterModel.Description</p>
+@*TODO: Make into read only form elements, and provide edit buttons for each already submitted text, also include a way to add new attacks, builds, and videos*@
+<h1>Name: @_characterModel.Name</h1>
+<p class="lead">Description: @_characterModel.Description</p>
 
-
+<DisplayAttacks Attacks=@_characterModel.Attacks/>
+<DisplayBuilds Builds=@_characterModel.Builds/>
+<p>Common Strategies: @_characterModel.CommonStrategy</p>
+<DisplayVideos Videos=@_characterModel.Videos/>

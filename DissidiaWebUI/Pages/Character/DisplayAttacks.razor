@@ -1,0 +1,16 @@
+﻿<h3>Attacks</h3>
+
+<h4>Bravery Attacks</h4>
+@foreach (var bravery in _bravery)
+{
+    <Attack RenderAttack=bravery/>
+    <br />
+}
+
+<h4>HP Attacks</h4>
+@foreach (var hp in _hps)
+{
+    <Attack RenderAttack=hp/>
+    <br />
+}
+
