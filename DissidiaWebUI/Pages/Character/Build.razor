@@ -1,4 +1,18 @@
 ﻿
 @*<img class="img-thumbnail" src=@RenderBuild.ImagePath/> TODO: Uncomment line once images have been set up*@
 <p>@RenderBuild.ImagePath</p>
-<p>Description: @RenderBuild.Description</p>
+<div class="input-group">
+    <span class="input-group-text">Build Description</span>
+    <InputTextArea class="form-control" @bind-Value=@RenderBuild.Description/>
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Actions
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#">Edit</a></li> @*Add on click event*@
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Delete</a></li> @*Add on click event*@
+    </ul>
+</div>
+@*VERIFY FORM LOOK*@
+@*Make add build model as a new modal or an additional value in the list? Use file uploader from boostrap*@
+@*<p>Description: @RenderBuild.Description</p>*@

@@ -2,11 +2,26 @@
 
 <CharacterSelector CharacterId=@currentId/>
 
-@*TODO: Make into read only form elements, and provide edit buttons for each already submitted text, also include a way to add new attacks, builds, and videos*@
-<h1>Name: @_characterModel.Name</h1>
-<p class="lead">Description: @_characterModel.Description</p>
+<EditForm Model=_characterModel>
+    @*<InputText readonly class="form-control-plaintext h1" @bind-Value=@_characterModel.Name/>*@
+    <div class="mb-3">
+        <span class="input-group-text">Description</span>
+        @*<label class="form-label">Description</label>*@
+        <InputTextArea readonly class="form-control" @bind-Value=@_characterModel.Description/>
+    </div>
+    <DisplayAttacks Attacks=@_characterModel.Attacks/>
+    <DisplayBuilds Builds=@_characterModel.Builds/>
+    <div class="mb-3">
+        <span class="input-group-text">Common Strategy</span>
+        <InputTextArea class="form-control" readonly @bind-Value=@_characterModel.CommonStrategy/>
+    </div>
+    <DisplayVideos Videos=@_characterModel.Videos/>
+</EditForm>
 
-<DisplayAttacks Attacks=@_characterModel.Attacks/>
+@*<h1>Name: @_characterModel.Name</h1>
+<p class="lead">Description: @_characterModel.Description</p>*@
+
+@*<DisplayAttacks Attacks=@_characterModel.Attacks/>
 <DisplayBuilds Builds=@_characterModel.Builds/>
 <p>Common Strategies: @_characterModel.CommonStrategy</p>
-<DisplayVideos Videos=@_characterModel.Videos/>
+<DisplayVideos Videos=@_characterModel.Videos/>*@
