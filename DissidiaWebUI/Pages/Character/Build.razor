@@ -4,14 +4,14 @@
 <div class="input-group">
     <span class="input-group-text">Build Description</span>
     <InputTextArea class="form-control" @bind-Value=@RenderBuild.Description/>
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Actions
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Edit</a></li> @*Add on click event*@
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Delete</a></li> @*Add on click event*@
-    </ul>
+    <Dropdown TItem="string" OnSelected=@HandleOnSelected>
+        <InitialTip>Actions</InitialTip>
+        <ChildContent>
+            <DropdownListItem Item="@edit">Edit</DropdownListItem>
+            <div class="dropdown-divider"></div>
+            <DropdownListItem Item="@delete">Delete</DropdownListItem>
+        </ChildContent>
+    </Dropdown>
 </div>
 @*VERIFY FORM LOOK*@
 @*Make add build model as a new modal or an additional value in the list? Use file uploader from boostrap*@

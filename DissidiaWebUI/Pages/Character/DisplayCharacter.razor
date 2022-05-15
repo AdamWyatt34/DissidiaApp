@@ -3,10 +3,8 @@
 <CharacterSelector CharacterId=@currentId/>
 
 <EditForm Model=_characterModel>
-    @*<InputText readonly class="form-control-plaintext h1" @bind-Value=@_characterModel.Name/>*@
     <div class="mb-3">
         <span class="input-group-text">Description</span>
-        @*<label class="form-label">Description</label>*@
         <InputTextArea readonly class="form-control" @bind-Value=@_characterModel.Description/>
     </div>
     <DisplayAttacks Attacks=@_characterModel.Attacks/>
@@ -18,10 +16,3 @@
     <DisplayVideos Videos=@_characterModel.Videos/>
 </EditForm>
 
-@*<h1>Name: @_characterModel.Name</h1>
-<p class="lead">Description: @_characterModel.Description</p>*@
-
-@*<DisplayAttacks Attacks=@_characterModel.Attacks/>
-<DisplayBuilds Builds=@_characterModel.Builds/>
-<p>Common Strategies: @_characterModel.CommonStrategy</p>
-<DisplayVideos Videos=@_characterModel.Videos/>*@

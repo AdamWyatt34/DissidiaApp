@@ -2,28 +2,25 @@
     <span class="input-group-text">Name, Frames, Priority</span>
     <InputText readonly class="form-control" @bind-Value=@RenderAttack.Name/>
     <InputText readonly class="form-control" @bind-Value=@RenderAttack.Frames/>
-    <Select class="form-select-sm">
+    <select class="form-select-sm">
         @foreach (var priority in priorityValues)
         {
             <option value=priority>@Enum.GetName(typeof(Models.Enums.PriorityType),priority)</option>
         }
-    </Select>
+    </select>
 </div>
-<div class="input-group">
+<div class="input-group mb-3">
     <span class="input-group-text">Description</span>
-    <InputTextArea readonly class="form-control" @bind-Value=@RenderAttack.Description/>
+    <InputText readonly class="form-control" @bind-Value=@RenderAttack.Description/>
+    <Dropdown TItem="string" OnSelected=@HandleOnSelected>
+        <InitialTip>Actions</InitialTip>
+        <ChildContent>
+            <DropdownListItem Item="@edit">Edit</DropdownListItem>
+            <div class="dropdown-divider"></div>
+            <DropdownListItem Item="@delete">Delete</DropdownListItem>
+        </ChildContent>
+    </Dropdown>
 </div>
-<div class="input-group">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Actions
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Edit</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Delete</a></li>
-    </ul>
-</div>
-@*VERIFY FORM LOOK*@
-@*Make add attack component as modal or new appearing in a list?*@
-@*<p>Name: @RenderAttack.Name Frames: @RenderAttack.Frames Priority: @Enum.GetName(typeof(PriorityType), RenderAttack.Priority)</p>*@
-@*<p>Description: @RenderAttack.Description</p>*@
+
+@*Make add attack component as modal*@
+
