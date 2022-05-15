@@ -1,4 +1,26 @@
-﻿@using DissidiaWebUI.Models.Enums
+﻿<div class="input-group mb-3">
+    <span class="input-group-text">Name, Frames, Priority</span>
+    <InputText readonly class="form-control" @bind-Value=@RenderAttack.Name/>
+    <InputText readonly class="form-control" @bind-Value=@RenderAttack.Frames/>
+    <select class="form-select-sm">
+        @foreach (var priority in priorityValues)
+        {
+            <option value=priority>@Enum.GetName(typeof(Models.Enums.PriorityType),priority)</option>
+        }
+    </select>
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text">Description</span>
+    <InputText readonly class="form-control" @bind-Value=@RenderAttack.Description/>
+    <Dropdown TItem="string" OnSelected=@HandleOnSelected>
+        <InitialTip>Actions</InitialTip>
+        <ChildContent>
+            <DropdownListItem Item="@edit">Edit</DropdownListItem>
+            <div class="dropdown-divider"></div>
+            <DropdownListItem Item="@delete">Delete</DropdownListItem>
+        </ChildContent>
+    </Dropdown>
+</div>
 
-<p>Name: @RenderAttack.Name Frames: @RenderAttack.Frames Priority: @Enum.GetName(typeof(PriorityType), RenderAttack.Priority)</p>
-<p>Description: @RenderAttack.Description</p>
+@*Make add attack component as modal*@
+
