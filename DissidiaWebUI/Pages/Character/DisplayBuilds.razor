@@ -1,6 +1,6 @@
-﻿<h3>Builds</h3>
-
-@foreach (var build in Builds)
-{
-    <Build RenderBuild=build/>
-}
+﻿<Collapsable Title="Builds" Collapsed="true" Value ="">
+    @foreach (var build in Builds)
+    {
+        <Build RenderBuild=build/>
+    }
+</Collapsable>

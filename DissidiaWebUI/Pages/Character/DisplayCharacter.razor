@@ -7,12 +7,12 @@
         <span class="input-group-text">Description</span>
         <InputTextArea readonly class="form-control" @bind-Value=@_characterModel.Description/>
     </div>
-    <DisplayAttacks Attacks=@_characterModel.Attacks/>
-    <DisplayBuilds Builds=@_characterModel.Builds/>
     <div class="mb-3">
         <span class="input-group-text">Common Strategy</span>
         <InputTextArea class="form-control" readonly @bind-Value=@_characterModel.CommonStrategy/>
     </div>
+    <DisplayAttacks Attacks=@_characterModel.Attacks/>
+    <DisplayBuilds Builds=@_characterModel.Builds/>
     <DisplayVideos Videos=@_characterModel.Videos/>
 </EditForm>
 

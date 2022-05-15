@@ -1,6 +1,7 @@
-﻿<h3>Videos</h3>
+﻿<Collapsable Title="Videos" Collapsed="true">
+    @foreach (var video in Videos)
+    {
+        <Video RenderVideo=video/>
+    }
+</Collapsable>
 
-@foreach (var video in Videos)
-{
-    <Video RenderVideo=video/>
-}

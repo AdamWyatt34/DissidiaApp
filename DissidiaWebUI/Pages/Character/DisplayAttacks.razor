@@ -1,16 +1,21 @@
-﻿<h3>Attacks</h3>
+﻿<Collapsable Title="Attacks" Collapsed="true">
+    <Collapsable Title="Bravery Attacks" Collapsed="true" Value="">
+    @foreach (var bravery in _bravery)
+    {
+        <Attack RenderAttack=bravery/>
+        <br />
+    }
+    </Collapsable>
 
-<h4>Bravery Attacks</h4>
-@foreach (var bravery in _bravery)
-{
-    <Attack RenderAttack=bravery/>
-    <br />
-}
+    <Collapsable Title="HP Attacks" Collapsed="true" Value="">
+        @foreach (var hp in _hps)
+        {
+            <Attack RenderAttack=hp/>
+            <br />
+        }
+    </Collapsable>
+</Collapsable>
 
-<h4>HP Attacks</h4>
-@foreach (var hp in _hps)
-{
-    <Attack RenderAttack=hp/>
-    <br />
-}
+
+
 
