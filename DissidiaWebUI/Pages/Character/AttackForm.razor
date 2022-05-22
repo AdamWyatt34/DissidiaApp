@@ -1,0 +1,43 @@
+﻿@using DissidiaWebUI.Models.Enums
+
+@if (@_currentAttackModel == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+  <EditForm Model=_currentAttackModel OnValidSubmit=SaveAttack>
+      <DataAnnotationsValidator/>
+      <ValidationSummary Model=_currentAttackModel/>
+        <div class="form-group">
+            <span class="input-group-text">Attack Type</span>
+            <select @onchange=HandleAttackTypeChange class="form-control">
+                @foreach (var type in _attackTypes)
+                {
+                    <option value=type>@Enum.GetName(typeof(Models.Enums.AttackType),type)</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <span class="input-group-text">Name</span>
+            <InputText class="form-control" @bind-Value=_currentAttackModel.Name/>
+        </div>
+        <div class="form-group">
+            <span class="input-group-text">Frames</span>
+            <InputText class="form-control" @bind-Value=_currentAttackModel.Frames/>
+        </div>
+        <div class="form-group">
+            <span class="input-group-text">Priority</span>
+            <select @onchange=HandlePriorityTypeChange class="form-control">
+                @foreach (var type in _priorityTypes)
+                {
+                    <option value=type>@Enum.GetName(typeof(Models.Enums.PriorityType),type)</option>
+                }
+            </select>
+        </div>
+        <button @onclick=SaveAttack class="btn btn-primary">Submit</button>
+        <button @onclick=_blazoredModalInstance.CancelAsync class="btn btn-secondary">Cancel</button>
+    </EditForm>
+}
+
+

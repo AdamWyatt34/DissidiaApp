@@ -9,6 +9,8 @@ namespace DissidiaWebUI.Pages.Character
     {
         [Parameter]
         public AttackModel RenderAttack { get; set; } = new AttackModel();
+        [Parameter]
+        public EventCallback<EventCallbackArgs<AttackModel>> HandleDropdownButtonSelect { get; set; }
 
         private List<PriorityType> priorityValues = new List<PriorityType>();
         private string edit = "Edit";
@@ -21,7 +23,12 @@ namespace DissidiaWebUI.Pages.Character
 
         public void HandleOnSelected(string selected)
         {
-            Console.WriteLine(selected);
+            EventCallbackArgs<AttackModel> args = new EventCallbackArgs<AttackModel>()
+            {
+                Action = selected,
+                Model = RenderAttack
+            };
+            HandleDropdownButtonSelect.InvokeAsync(args);
         }
 
     }

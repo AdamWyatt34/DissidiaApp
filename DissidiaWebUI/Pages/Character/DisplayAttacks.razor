@@ -1,8 +1,9 @@
 ﻿<Collapsable Title="Attacks" Collapsed="true">
+    <button @onclick="@(() => ShowAddAttackForm())" type="button" class="btn btn-link">Add Attack</button>
     <Collapsable Title="Bravery Attacks" Collapsed="true" Value="">
     @foreach (var bravery in _bravery)
     {
-        <Attack RenderAttack=bravery/>
+        <Attack RenderAttack=bravery HandleDropdownButtonSelect=HandleDropDownSelection/>
         <br />
     }
     </Collapsable>
@@ -10,7 +11,7 @@
     <Collapsable Title="HP Attacks" Collapsed="true" Value="">
         @foreach (var hp in _hps)
         {
-            <Attack RenderAttack=hp/>
+            <Attack RenderAttack=hp HandleDropdownButtonSelect=HandleDropDownSelection/>
             <br />
         }
     </Collapsable>

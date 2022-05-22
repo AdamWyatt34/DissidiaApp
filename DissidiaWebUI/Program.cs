@@ -1,3 +1,4 @@
+using Blazored.Modal;
 using DissidiaWebUI.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -10,6 +11,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddBlazoredModal();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
