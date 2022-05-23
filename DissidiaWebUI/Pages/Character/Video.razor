@@ -1,4 +1,18 @@
-﻿<iframe width="560" height="315" src=@RenderVideo title="YouTube video player" 
-    frameborder="0" allow="accelerometer; autoplay; 
-    clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+﻿<div class="input-group mb-3">
+    <iframe width="560" height="315" src=@RenderVideo title="YouTube video player" 
+        frameborder="0" allow="accelerometer; autoplay; 
+        clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="px-2">
+    </iframe>
+    <br />
+    @if (RenderDropdownButton)
+    {
+        <Dropdown TItem="string" OnSelected=@HandleOnSelected>
+            <InitialTip>Actions</InitialTip>
+            <ChildContent>
+                <DropdownListItem Item="@edit">Edit</DropdownListItem>
+                <div class="dropdown-divider"></div>
+                <DropdownListItem Item="@delete">Delete</DropdownListItem>
+            </ChildContent>
+        </Dropdown>
+    }
+</div>

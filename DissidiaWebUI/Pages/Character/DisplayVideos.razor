@@ -1,7 +1,10 @@
 ﻿<Collapsable Title="Videos" Collapsed="true">
+    <button @onclick="@(() => ShowAddVideoForm())" type="button" class="btn btn-link">Add Video</button>
+    <br />
     @foreach (var video in Videos)
     {
-        <Video RenderVideo=@video/>
+        <Video RenderVideo=@video HandleDropdownButtonSelect=HandleDropDownSelection/>
+        <br />
     }
 </Collapsable>
 

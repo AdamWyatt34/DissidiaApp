@@ -1,0 +1,15 @@
+﻿
+
+<EditForm Model=@_currentVideo OnValidSubmit=SaveVideo>
+    <div class="form-group">
+        <span class="input-group-text">Name</span>
+        <InputText class="form-control" @bind-Value=_currentVideo/>
+    </div>
+    @if (String.IsNullOrEmpty(_currentVideo) == false)
+    {
+        <h4>Preview of Video</h4>
+        <Video RenderVideo=@_currentVideo RenderDropdownButton=false/>
+    }
+     <button @onclick=SaveVideo class="btn btn-primary">Submit</button>
+     <button @onclick=_blazoredModalInstance.CancelAsync class="btn btn-secondary">Cancel</button>
+</EditForm>
