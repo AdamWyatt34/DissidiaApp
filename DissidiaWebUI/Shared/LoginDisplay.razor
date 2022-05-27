@@ -1,7 +1,7 @@
 ﻿<AuthorizeView>
     <Authorized>
         <a href="MicrosoftIdentity/Account/EditProfile">
-            Hello @context.User.Claims.FirstOrDefault(c => c.Type.Contains("gamertag"))?.Value  
+            Hello @context.User.Claims.FirstOrDefault(c => c.Type.Contains("Gamertag"))?.Value  
         </a>
         <a href="MicrosoftIdentity/Account/SignOut">Log Out</a>
     </Authorized>
