@@ -1,9 +1,12 @@
 ﻿<Collapsable Title="Videos" Collapsed="true">
-    <button @onclick="@(() => ShowAddVideoForm())" type="button" class="btn btn-link">Add Video</button>
-    <br />
+    @if (IsAuthenticated)
+    {
+        <button @onclick="@(() => ShowAddVideoForm())" type="button" class="btn btn-link">Add Video</button>
+        <br />
+    }
     @foreach (var video in Videos)
     {
-        <Video RenderVideo=@video HandleDropdownButtonSelect=HandleDropDownSelection/>
+        <Video RenderVideo=@video HandleDropdownButtonSelect=HandleDropDownSelection IsAuthenticated=@IsAuthenticated/>
         <br />
     }
 </Collapsable>

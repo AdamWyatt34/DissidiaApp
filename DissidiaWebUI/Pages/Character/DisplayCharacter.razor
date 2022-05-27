@@ -1,18 +1,20 @@
 ﻿@page "/Character/{CharacterId}"
+@using DissidiaWebUI.Helpers
+@inject AuthenticationStateProvider authenticationState
 
 <CharacterSelector CharacterId=@currentId/>
 
 <EditForm Model=_characterModel>
     <div class="mb-3">
         <span class="input-group-text">Description</span>
-        <InputTextArea readonly class="form-control" @bind-Value=@_characterModel.Description/>
+        <InputTextArea disabled=@{!_isAuthenticated} class="form-control" @bind-Value=@_characterModel.Description/>
     </div>
     <div class="mb-3">
         <span class="input-group-text">Common Strategy</span>
-        <InputTextArea class="form-control" readonly @bind-Value=@_characterModel.CommonStrategy/>
+        <InputTextArea class="form-control" disabled=@{!_isAuthenticated} @bind-Value=@_characterModel.CommonStrategy/>
     </div>
-    <DisplayAttacks Attacks=@_characterModel.Attacks/>
-    <DisplayBuilds Builds=@_characterModel.Builds/>
-    <DisplayVideos Videos=@_characterModel.Videos/>
+    <DisplayAttacks Attacks=@_characterModel.Attacks isAuthenticated=@_isAuthenticated/>
+    <DisplayBuilds Builds=@_characterModel.Builds IsAuthenticated=@_isAuthenticated/>
+    <DisplayVideos Videos=@_characterModel.Videos IsAuthenticated=@_isAuthenticated/>
 </EditForm>
 

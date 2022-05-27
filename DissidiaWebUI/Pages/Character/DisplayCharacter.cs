@@ -16,7 +16,7 @@ namespace DissidiaWebUI.Pages.Character
         ICharacterService? _characterService { get; set; }
         private CharacterModel _characterModel = new CharacterModel();
         private string? _errorString = string.Empty;
-
+        private bool _isAuthenticated;
 
         protected override async Task OnInitializedAsync()
         {
@@ -39,7 +39,10 @@ namespace DissidiaWebUI.Pages.Character
                 }
             }
 
-            //return base.OnInitializedAsync();
+            var authState = await authenticationState.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            _isAuthenticated = user.Identity.IsAuthenticated;
         }
 
         public void Dispose()

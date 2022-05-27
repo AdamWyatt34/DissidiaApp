@@ -2,12 +2,19 @@ using Blazored.Modal;
 using DissidiaWebUI.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Rewrite;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor().AddMicrosoftIdentityConsentHandler();
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureADB2C"));
+builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICharacterService, CharacterService>();
@@ -27,6 +34,23 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+
+app.UseRewriter(
+    new RewriteOptions().Add(
+        context =>
+        {
+            if (context.HttpContext.Request.Path == "/MicrosoftIdentity/Account/SignedOut")
+            {
+                context.HttpContext.Response.Redirect("/");
+            }
+        }
+        )
+    );
+
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

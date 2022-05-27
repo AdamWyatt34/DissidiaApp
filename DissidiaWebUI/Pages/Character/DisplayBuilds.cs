@@ -7,5 +7,7 @@ namespace DissidiaWebUI.Pages.Character
     {
         [Parameter]
         public List<BuildModel> Builds { get; set; } = new List<BuildModel>();
+        [Parameter]
+        public bool IsAuthenticated { get; set; }
     }
 }

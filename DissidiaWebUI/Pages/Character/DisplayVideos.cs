@@ -14,6 +14,9 @@ namespace DissidiaWebUI.Pages.Character
         [Parameter]
         public List<string> Videos { get; set; } = new List<string>();
 
+        [Parameter]
+        public bool IsAuthenticated { get; set; }
+
         async Task ShowAddVideoForm()
         {
             var videoModal = Modal.Show<VideoForm>("Add Video");

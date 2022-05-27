@@ -4,7 +4,7 @@
         clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="px-2">
     </iframe>
     <br />
-    @if (RenderDropdownButton)
+    @if (RenderDropdownButton && IsAuthenticated)
     {
         <Dropdown TItem="string" OnSelected=@HandleOnSelected>
             <InitialTip>Actions</InitialTip>

@@ -7,6 +7,8 @@ namespace DissidiaWebUI.Pages.Character
     {
         [Parameter]
         public BuildModel RenderBuild { get; set; } = new BuildModel();
+        [Parameter]
+        public bool IsAuthenticated { get; set; }
         private string edit = "Edit";
         private string delete = "Delete";
         public void HandleOnSelected(string selected)

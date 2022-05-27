@@ -12,9 +12,14 @@ namespace DissidiaWebUI.Pages.Character
         [Parameter]
         public EventCallback<EventCallbackArgs<AttackModel>> HandleDropdownButtonSelect { get; set; }
 
+        [Parameter]
+        public bool IsAuthenticated { get; set; }
+
         private List<PriorityType> priorityValues = new List<PriorityType>();
         private string edit = "Edit";
         private string delete = "Delete";
+
+        private bool IsDisabled => !IsAuthenticated;
 
         public Attack()
         {

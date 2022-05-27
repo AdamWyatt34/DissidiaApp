@@ -12,6 +12,9 @@ namespace DissidiaWebUI.Pages.Character
 
         [Parameter]
         public EventCallback<EventCallbackArgs<string>> HandleDropdownButtonSelect { get; set; }
+        
+        [Parameter]
+        public bool IsAuthenticated { get; set; }
 
         private string edit = "Edit";
         private string delete = "Delete";

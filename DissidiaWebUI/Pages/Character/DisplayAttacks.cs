@@ -11,6 +11,10 @@ namespace DissidiaWebUI.Pages.Character
         public IModalService Modal { get; set; }
         [Parameter]
         public List<AttackModel> Attacks { get; set; } = new List<AttackModel>();
+
+        [Parameter]
+        public bool isAuthenticated { get; set; }
+
         private List<AttackModel> _bravery = new List<AttackModel>();
         private List<AttackModel> _hps = new List<AttackModel>();
 
