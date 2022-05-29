@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using Microsoft.AspNetCore.Rewrite;
+using DissidiaWebUI.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+var azureStorageSettingsSection = builder.Configuration.GetSection("AzureStorage");
+builder.Services.Configure<AzureStorageSettings>(azureStorageSettingsSection);
 builder.Services.AddBlazoredModal();
 var app = builder.Build();
 

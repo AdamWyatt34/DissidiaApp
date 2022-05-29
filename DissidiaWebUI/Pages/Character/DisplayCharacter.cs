@@ -71,5 +71,11 @@ namespace DissidiaWebUI.Pages.Character
                 _errorString = ex.Message;
             }
         }
+
+        private async Task SaveCharacter()
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.PutAsJsonAsync<CharacterModel>($"https://localhost:7172/api/character/edit", _characterModel);
+        }
     }
 }

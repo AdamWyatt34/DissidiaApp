@@ -4,7 +4,7 @@
 
 <CharacterSelector CharacterId=@currentId/>
 
-<EditForm Model=_characterModel>
+<EditForm Model=_characterModel OnValidSubmit=SaveCharacter>
     <div class="mb-3">
         <span class="input-group-text">Description</span>
         <InputTextArea disabled=@{!_isAuthenticated} class="form-control" @bind-Value=@_characterModel.Description/>
@@ -16,5 +16,6 @@
     <DisplayAttacks Attacks=@_characterModel.Attacks isAuthenticated=@_isAuthenticated/>
     <DisplayBuilds Builds=@_characterModel.Builds IsAuthenticated=@_isAuthenticated/>
     <DisplayVideos Videos=@_characterModel.Videos IsAuthenticated=@_isAuthenticated/>
+    <button @onclick=SaveBuild class="btn btn-primary">Submit</button>
 </EditForm>
 

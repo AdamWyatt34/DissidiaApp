@@ -1,11 +1,10 @@
 ﻿@using DissidiaWebUI.Helpers
 
-@*<img class="img-thumbnail" src=@RenderBuild.ImagePath/> TODO: Uncomment line once images have been set up*@
-<p>@RenderBuild.ImagePath</p>
+<img class="img-thumbnail" src=@RenderBuild.ImagePath/>
 <div class="input-group">
     <span class="input-group-text">Build Description</span>
     <InputTextArea class="form-control" @bind-Value=@RenderBuild.Description disabled={!IsAuthenticated}/>
-    @if (IsAuthenticated)
+    @if (IsAuthenticated && RenderDropdownButton)
     {
         <Dropdown TItem="string" OnSelected=@HandleOnSelected>
             <InitialTip>Actions</InitialTip>
@@ -15,7 +14,6 @@
                 <DropdownListItem Item="@delete">Delete</DropdownListItem>
             </ChildContent>
         </Dropdown>
-    }
-    
+    }    
 </div>
-@*Make add build model as a new modal or an additional value in the list? Use file uploader from boostrap*@
+@*Make add build model as a new modal. Use file uploader from boostrap*@
