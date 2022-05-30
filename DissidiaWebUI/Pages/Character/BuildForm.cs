@@ -15,7 +15,7 @@ namespace DissidiaWebUI.Pages.Character
         BlazoredModalInstance _blazoredModalInstance { get; set; }
 
         [Parameter]
-        public BuildModel? _currentBuild { get; set; }
+        public BuildModel? _currentBuild { get; set; } = new BuildModel();
 
         [Inject]
         IOptions<AzureStorageSettings> _options { get; set; }
@@ -35,7 +35,11 @@ namespace DissidiaWebUI.Pages.Character
         public async Task SaveBuild()
         {
             _currentBuildModel.ImagePath = await _blobUtility.UploadBlob(_options.Value.FullImagesContainerNameOption, selectedFile, "", _options.Value.StorageAccountKeyOption);
-            //Check if build passed in has image, if it does then delete it. 
+            //Check if build passed in has image, if it does then delete it.
+            if (_currentBuild.ImagePath != _currentBuildModel.ImagePath)
+            {
+                await _blobUtility.DeleteBlob(_options.Value.FullImagesContainerNameOption, _currentBuild.ImagePath);
+            }
             _blazoredModalInstance.CloseAsync(ModalResult.Ok(_currentBuildModel));
         }
 

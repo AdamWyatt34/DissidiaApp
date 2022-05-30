@@ -21,6 +21,13 @@ namespace DissidiaWebUI.Data
             return await client.ExistsAsync();
         }
 
+        public async Task DeleteBlob(string blobContainer, string fileName)
+        {
+            BlobContainerClient container = blobServiceClient.GetBlobContainerClient(blobContainer);
+            BlobClient blobClient = container.GetBlobClient(fileName);
+            await blobClient.DeleteIfExistsAsync();
+        }
+
         public async Task<string> UploadBlob(string blobContainer, IBrowserFile file, string directoryName, string accountKey)
         {
             

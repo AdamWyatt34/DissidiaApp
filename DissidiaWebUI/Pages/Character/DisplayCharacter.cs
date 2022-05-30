@@ -8,7 +8,7 @@ namespace DissidiaWebUI.Pages.Character
     public partial class DisplayCharacter
     {
         [Parameter]
-        public string CharacterId { get; set; }
+        public string? CharacterId { get; set; }
         private string currentId;
         [Inject]
         private IHttpClientFactory? _httpClientFactory { get; set; }
@@ -30,7 +30,7 @@ namespace DissidiaWebUI.Pages.Character
                 try
                 {
 #pragma warning disable CS8601 // Possible null reference assignment.
-                    _characterModel = await client.GetFromJsonAsync<CharacterModel>($"https://localhost:7172/api/character/{currentId}");
+                    _characterModel = await client.GetFromJsonAsync<CharacterModel>($"{config.GetValue<string>("APIUrl")}/{currentId}");
 #pragma warning restore CS8601 // Possible null reference assignment.
                 }
                 catch (Exception ex)
@@ -62,7 +62,7 @@ namespace DissidiaWebUI.Pages.Character
             try
             {
 #pragma warning disable CS8601 // Possible null reference assignment.
-                _characterModel = await client.GetFromJsonAsync<CharacterModel>($"https://localhost:7172/api/character/{currentId}");
+                _characterModel = await client.GetFromJsonAsync<CharacterModel>($"{config.GetValue<string>("APIUrl")}/{currentId}");
 #pragma warning restore CS8601 // Possible null reference assignment.
                 StateHasChanged();
             }
@@ -75,7 +75,7 @@ namespace DissidiaWebUI.Pages.Character
         private async Task SaveCharacter()
         {
             var client = _httpClientFactory.CreateClient();
-            client.PutAsJsonAsync<CharacterModel>($"https://localhost:7172/api/character/edit", _characterModel);
+            await client.PutAsJsonAsync<CharacterModel>($"{config.GetValue<string>("APIUrl")}/edit", _characterModel);
         }
     }
 }

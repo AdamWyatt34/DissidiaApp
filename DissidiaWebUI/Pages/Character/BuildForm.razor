@@ -4,10 +4,6 @@
         <span class="input-group-text">Description</span>
         <InputText class="form-control" @bind-Value=_currentBuildModel.Description/>
     </div>
-    @*@if (String.IsNullOrEmpty(_currentBuildModel.ImagePath) == false && String.IsNullOrEmpty(_currentBuildModel.Description) == false)
-    {
-        <Build RenderDropdownButton=false IsAuthenticated=true RenderBuild=@_currentBuildModel/>
-    }*@
-     <button @onclick=SaveBuild class="btn btn-primary">Submit</button>
+     <button type="submit" class="btn btn-primary">Submit</button>
      <button @onclick=_blazoredModalInstance.CancelAsync class="btn btn-secondary">Cancel</button>
  </EditForm>

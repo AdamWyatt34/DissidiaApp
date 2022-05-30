@@ -7,7 +7,7 @@ namespace DissidiaWebUI.Pages.Character
     public partial class CharacterSelector
     {
         [Parameter]
-        public string CharacterId { get; set; }
+        public string? CharacterId { get; set; }
         private Dictionary<Guid, string> _charactersDictionary = new Dictionary<Guid, string>();
         [Inject]
         
@@ -15,13 +15,21 @@ namespace DissidiaWebUI.Pages.Character
 
         [Inject]
         ICharacterService? _characterService { get; set; }
+
+        [Inject]
+        IConfiguration config { get; set; }
         protected override async Task OnInitializedAsync()
         {
             var client = _httpClientFactory.CreateClient();
 
-            var fullCharacters = await client.GetFromJsonAsync<List<CharacterModel>>("https://localhost:7172/api/character");
+            var fullCharacters = await client.GetFromJsonAsync<List<CharacterModel>>(config.GetValue<string>("APIUrl"));
 
             _charactersDictionary = fullCharacters.ToDictionary(x => x.Id, x => x.Name);
+
+            if (String.IsNullOrEmpty(CharacterId))
+            {
+                _characterService.SendNewCharacter(_charactersDictionary.Keys.First().ToString());
+            }
 
             await base.OnInitializedAsync();
         }

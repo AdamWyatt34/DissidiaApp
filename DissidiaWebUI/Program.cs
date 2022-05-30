@@ -16,7 +16,6 @@ builder.Services.AddServerSideBlazor().AddMicrosoftIdentityConsentHandler();
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureADB2C"));
 builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 var azureStorageSettingsSection = builder.Configuration.GetSection("AzureStorage");

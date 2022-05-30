@@ -13,10 +13,6 @@ namespace DissidiaWebUI.Pages.Character
         [Parameter]
         public EventCallback<EventCallbackArgs<BuildModel>> HandleDropdownButtonSelect { get; set; }
 
-        [Parameter]
-        public bool RenderDropdownButton { get; set; } = true;
-
-
         private string edit = "Edit";
         private string delete = "Delete";
         public void HandleOnSelected(string selected)

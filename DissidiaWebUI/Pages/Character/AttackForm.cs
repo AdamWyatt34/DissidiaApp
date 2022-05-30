@@ -34,12 +34,16 @@ namespace DissidiaWebUI.Pages.Character
 
         private void HandleAttackTypeChange(ChangeEventArgs e)
         {
-            _currentAttackModel.Type = (AttackType)e.Value;
+            var newType = AttackType.Bravery;
+            Enum.TryParse<AttackType>(e.Value.ToString(), out newType);
+            _currentAttackModel.Type = newType;
         }
 
         private void HandlePriorityTypeChange(ChangeEventArgs e)
         {
-            _currentAttackModel.Priority = (PriorityType)e.Value;
+            var newPriority = PriorityType.High;
+            Enum.TryParse<PriorityType>(e.Value.ToString(), out newPriority);
+            _currentAttackModel.Priority = newPriority;
         }
     }
 }

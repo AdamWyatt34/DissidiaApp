@@ -1,6 +1,8 @@
-﻿@page "/Character/{CharacterId}"
+﻿@page "/Character"
+@page "/Character/{CharacterId}"
 @using DissidiaWebUI.Helpers
 @inject AuthenticationStateProvider authenticationState
+@inject IConfiguration config
 
 <CharacterSelector CharacterId=@currentId/>
 
@@ -16,6 +18,9 @@
     <DisplayAttacks Attacks=@_characterModel.Attacks isAuthenticated=@_isAuthenticated/>
     <DisplayBuilds Builds=@_characterModel.Builds IsAuthenticated=@_isAuthenticated/>
     <DisplayVideos Videos=@_characterModel.Videos IsAuthenticated=@_isAuthenticated/>
-    <button @onclick=SaveBuild class="btn btn-primary">Submit</button>
+    @if (_isAuthenticated)
+    {
+        <button type="submit" class="btn btn-primary">Save</button>  
+    }
 </EditForm>
 

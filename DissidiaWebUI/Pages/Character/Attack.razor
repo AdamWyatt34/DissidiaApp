@@ -1,18 +1,18 @@
 ﻿@using DissidiaWebUI.Helpers
 <div class="input-group mb-3">
     <span class="input-group-text">Name, Frames, Priority</span>
-    <InputText disabled=@{!IsAuthenticated} class="form-control" @bind-Value=@RenderAttack.Name/>
-    <InputText disabled=@{!IsAuthenticated} class="form-control" @bind-Value=@RenderAttack.Frames/>
-    <select class="form-select-sm" disabled=@IsDisabled>
+    <InputText disabled class="form-control" @bind-Value=@RenderAttack.Name/>
+    <InputText disabled class="form-control" @bind-Value=@RenderAttack.Frames/>
+    <select class="form-select-sm" disabled>
         @foreach (var priority in priorityValues)
         {
-            <option value=priority>@Enum.GetName(typeof(Models.Enums.PriorityType),priority)</option>
+            <option value=@priority>@Enum.GetName(typeof(Models.Enums.PriorityType),priority)</option>
         }
     </select>
 </div>
 <div class="input-group mb-3">
     <span class="input-group-text">Description</span>
-    <InputText disabled=@{!IsAuthenticated} class="form-control" @bind-Value=@RenderAttack.Description/>
+    <InputText disabled class="form-control" @bind-Value=@RenderAttack.Description/>
     @if (IsAuthenticated)
     {
         <Dropdown TItem="string" OnSelected=@HandleOnSelected>

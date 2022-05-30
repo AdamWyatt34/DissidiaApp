@@ -14,7 +14,7 @@ else
             <select @onchange=HandleAttackTypeChange class="form-control">
                 @foreach (var type in _attackTypes)
                 {
-                    <option value=type>@Enum.GetName(typeof(Models.Enums.AttackType),type)</option>
+                    <option value=@type>@Enum.GetName(typeof(Models.Enums.AttackType),type)</option>
                 }
             </select>
         </div>
@@ -35,11 +35,11 @@ else
             <select @onchange=HandlePriorityTypeChange class="form-control">
                 @foreach (var type in _priorityTypes)
                 {
-                    <option value=type>@Enum.GetName(typeof(Models.Enums.PriorityType),type)</option>
+                    <option value=@type>@Enum.GetName(typeof(Models.Enums.PriorityType),type)</option>
                 }
             </select>
         </div>
-        <button @onclick=SaveAttack class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <button @onclick=_blazoredModalInstance.CancelAsync class="btn btn-secondary">Cancel</button>
     </EditForm>
 }
