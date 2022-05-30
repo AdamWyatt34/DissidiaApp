@@ -1,83 +1,56 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DissidiaAPI.Options;
+using DissidiaLibrary;
+using DissidiaLibrary.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
-namespace DissidiaAPI.Controllers
-{
+namespace DissidiaAPI.Controllers 
+{ 
+
+    [Route("api")]
     public class MatchupController : ControllerBase
     {
-        // GET: MatchupController
-        public ActionResult Index()
+        private readonly CosmosDBDataAccess _cosmosDB;
+        private readonly IOptions<CosmosDbSettings> _options;
+
+        public MatchupController(IOptions<CosmosDbSettings> options)
         {
-            throw new NotImplementedException();
+            _options = options;
+            _cosmosDB = new CosmosDBDataAccess(_options.Value.EndpointURL,
+                                               _options.Value.PrimaryKey,
+                                               _options.Value.DatabaseName,
+                                               _options.Value.MatchupAnalysisContainerName);
+        }
+
+        // GET: MatchupController
+        [HttpGet("Matchup")]
+        public async Task<List<MatchupAnalysisModel>> Index()
+        {
+            return await _cosmosDB.LoadRecordsByIdAsync<MatchupAnalysisModel>();
         }
 
         // GET: MatchupController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("Matchup/{id}")]
+        public async Task<MatchupAnalysisModel> Details(string id)
         {
-            throw new NotImplementedException();
-        }
-
-        // GET: MatchupController/Create
-        public ActionResult Create()
-        {
-            throw new NotImplementedException();
+            return await _cosmosDB.LoadRecordsByIdAsync<MatchupAnalysisModel>(id);
         }
 
         // POST: MatchupController/Create
-        [HttpPost]
+        [HttpPost("Matchup/Create")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task Create([FromBody]MatchupAnalysisModel matchup)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        // GET: MatchupController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            throw new NotImplementedException();
+            await _cosmosDB.UpsertRecordAsync(matchup);
         }
 
         // POST: MatchupController/Edit/5
-        [HttpPost]
+        [HttpPut("Matchup/Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task Edit([FromBody] MatchupAnalysisModel matchup)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        // GET: MatchupController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        // POST: MatchupController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                throw new NotImplementedException();
-            }
+            await _cosmosDB.UpsertRecordAsync(matchup);
         }
     }
 }

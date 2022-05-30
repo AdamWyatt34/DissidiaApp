@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DissidiaLibrary.Models
 {
-    public class CharacterModel
+    public class CharacterModel : IGuid
     {
         [JsonProperty(PropertyName = "id")]
         public Guid Id { get; set; } = Guid.NewGuid();

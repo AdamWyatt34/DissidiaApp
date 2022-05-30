@@ -37,6 +37,7 @@ namespace DissidiaAPI.Controllers
 
         // Post: CharacterController/Create
         [HttpPost("Character/Create")]
+        [ValidateAntiForgeryToken]
         public async Task Create([FromBody]CharacterModel character)
         {
             await _cosmosDB.UpsertRecordAsync(character);
@@ -44,6 +45,7 @@ namespace DissidiaAPI.Controllers
 
         // Put: CharacterController/Edit
         [HttpPut("Character/Edit")]
+        [ValidateAntiForgeryToken]
         public async Task Edit([FromBody]CharacterModel character)
         {
             await _cosmosDB.UpsertRecordAsync(character);
