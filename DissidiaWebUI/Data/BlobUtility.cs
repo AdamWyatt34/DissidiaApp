@@ -1,5 +1,4 @@
 ﻿using Azure.Storage.Blobs;
-using ImageMagick;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;

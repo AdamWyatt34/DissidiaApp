@@ -24,7 +24,7 @@ namespace DissidiaWebUI.Pages.Character
 
             var fullCharacters = await client.GetFromJsonAsync<List<CharacterModel>>(config.GetValue<string>("APIUrl"));
 
-            _charactersDictionary = fullCharacters.ToDictionary(x => x.Id, x => x.Name);
+            _charactersDictionary = fullCharacters.OrderBy(c => c.Name).ToDictionary(x => x.Id, x => x.Name);
 
             if (String.IsNullOrEmpty(CharacterId))
             {

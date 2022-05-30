@@ -3,7 +3,7 @@
 @using DissidiaWebUI.Helpers
 @inject AuthenticationStateProvider authenticationState
 @inject IConfiguration config
-
+<PageTitle>Character Guides</PageTitle>
 <CharacterSelector CharacterId=@currentId/>
 
 <EditForm Model=_characterModel OnValidSubmit=SaveCharacter>

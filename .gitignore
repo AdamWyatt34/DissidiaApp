@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DissidiaAPI/.config
+/DissidiaAPI/Properties
+/DissidiaWebUI/Properties/ServiceDependencies/Dissidia012 - Web Deploy
