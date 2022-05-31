@@ -41,7 +41,7 @@ namespace DissidiaWebUI.Pages.Character
 
         private void HandlePriorityTypeChange(ChangeEventArgs e)
         {
-            var newPriority = PriorityType.High;
+            var newPriority = PriorityType.RangedLow;
             Enum.TryParse<PriorityType>(e.Value.ToString(), out newPriority);
             _currentAttackModel.Priority = newPriority;
         }

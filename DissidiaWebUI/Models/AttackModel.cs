@@ -14,6 +14,6 @@ namespace DissidiaWebUI.Models
         [Required]
         public string Frames { get; set; }
         [Required]
-        public PriorityType Priority { get; set; } = PriorityType.High;
+        public PriorityType Priority { get; set; } = PriorityType.RangedLow;
     }
 }
