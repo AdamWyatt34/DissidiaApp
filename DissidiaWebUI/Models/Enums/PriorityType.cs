@@ -2,8 +2,20 @@
 {
     public enum PriorityType
     {
-        Ranged,
-        Mid,
-        High
+        RangedLow,
+        MeleeLow,
+        RangedMid,
+        MeleeMid,
+        RangedHigh,
+        MeleeHigh,
+        Special,
+        Unblockable,
+        BlockLow,
+        BlockMid,
+        BlockHigh,
+        JechtBlock,
+        BlockHighest,
+        ShellGuard,
+        ProtectGuard
     }
 }
