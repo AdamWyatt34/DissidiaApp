@@ -32,12 +32,12 @@ else
         </div>
         <div class="form-group">
             <span class="input-group-text">Priority</span>
-            <select @onchange=HandlePriorityTypeChange class="form-control">
+            <InputSelect @onchange=HandlePriorityTypeChange class="form-control" @bind-Value=@_currentAttackModel.Priority>
                 @foreach (var type in _priorityTypes)
                 {
                     <option value=@type>@Enum.GetName(typeof(Models.Enums.PriorityType),type)</option>
                 }
-            </select>
+            </InputSelect>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button @onclick=_blazoredModalInstance.CancelAsync class="btn btn-secondary">Cancel</button>

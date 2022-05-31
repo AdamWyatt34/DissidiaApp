@@ -3,12 +3,12 @@
     <span class="input-group-text">Name, Frames, Priority</span>
     <InputText disabled class="form-control" @bind-Value=@RenderAttack.Name/>
     <InputText disabled class="form-control" @bind-Value=@RenderAttack.Frames/>
-    <select class="form-select-sm" disabled>
+    <InputSelect class="form-select-sm" disabled @bind-Value=@RenderAttack.Priority>
         @foreach (var priority in priorityValues)
         {
             <option value=@priority>@Enum.GetName(typeof(Models.Enums.PriorityType),priority)</option>
         }
-    </select>
+    </InputSelect>
 </div>
 <div class="input-group mb-3">
     <span class="input-group-text">Description</span>
