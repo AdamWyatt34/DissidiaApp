@@ -27,7 +27,7 @@ namespace DissidiaWebUI.Data
             await blobClient.DeleteIfExistsAsync();
         }
 
-        public async Task<string> UploadBlob(string blobContainer, IBrowserFile file, string directoryName, string accountKey)
+        public async Task<string> UploadBlob(string blobContainer, IBrowserFile file, string accountName, string accountKey)
         {
             
             BlobContainerClient container = blobServiceClient.GetBlobContainerClient(blobContainer);
@@ -43,12 +43,12 @@ namespace DissidiaWebUI.Data
                 await blobClient.UploadAsync(fileStream);
             }
             
-            return GenerateStorageURL(file);
+            return GenerateStorageURL(file, accountName, blobContainer);
         }
 
-        private string GenerateStorageURL(IBrowserFile file)
+        private string GenerateStorageURL(IBrowserFile file, string accountName, string containerName)
         {
-            return "https://dissidia012.blob.core.windows.net/builds/" + file.Name;
+            return $"https://{accountName}.blob.core.windows.net/{containerName}/" + file.Name;
         }
 
         public async Task<List<IListBlobItem>> GetBlobs(string blobContainer)

@@ -6,7 +6,7 @@
     <InputSelect class="form-select-sm" disabled @bind-Value=@RenderAttack.Priority>
         @foreach (var priority in priorityValues)
         {
-            <option value=@priority>@Enum.GetName(typeof(Models.Enums.PriorityType),priority)</option>
+            <option value=@priority>@priority.ToDescription()</option>
         }
     </InputSelect>
 </div>

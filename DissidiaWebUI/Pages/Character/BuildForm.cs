@@ -34,7 +34,7 @@ namespace DissidiaWebUI.Pages.Character
         }
         public async Task SaveBuild()
         {
-            _currentBuildModel.ImagePath = await _blobUtility.UploadBlob(_options.Value.FullImagesContainerNameOption, selectedFile, "", _options.Value.StorageAccountKeyOption);
+            _currentBuildModel.ImagePath = await _blobUtility.UploadBlob(_options.Value.FullImagesContainerNameOption, selectedFile, _options.Value.StorageAccountNameOption, _options.Value.StorageAccountKeyOption);
             //Check if build passed in has image, if it does then delete it.
             if (_currentBuild.ImagePath != _currentBuildModel.ImagePath)
             {

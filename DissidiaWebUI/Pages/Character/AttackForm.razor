@@ -1,4 +1,5 @@
 ﻿@using DissidiaWebUI.Models.Enums
+@using DissidiaWebUI.Helpers
 
 @if (@_currentAttackModel == null)
 {
@@ -35,7 +36,7 @@ else
             <InputSelect @onchange=HandlePriorityTypeChange class="form-control" @bind-Value=@_currentAttackModel.Priority>
                 @foreach (var type in _priorityTypes)
                 {
-                    <option value=@type>@Enum.GetName(typeof(Models.Enums.PriorityType),type)</option>
+                    <option value=@type>@type.ToDescription()</option>
                 }
             </InputSelect>
         </div>
